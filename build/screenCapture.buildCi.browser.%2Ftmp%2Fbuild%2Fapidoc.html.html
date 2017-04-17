@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/sandeepmistry/bleno"
-
-    >bleno (v0.4.2)</a>
+    <a href="https://github.com/sandeepmistry/bleno">bleno (v0.4.2)</a>
 </h1>
 <h4>A Node.js module for implementing BLE (Bluetooth Low Energy) peripherals</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.bleno">module bleno</a><ol>
 
@@ -867,25 +860,25 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function Bleno() {
-  this.platform = &#x27;unknown&#x27;;
-  this.state = &#x27;unknown&#x27;;
-  this.address = &#x27;unknown&#x27;;
+  this.platform = 'unknown';
+  this.state = 'unknown';
+  this.address = 'unknown';
   this.rssi = 0;
   this.mtu = 20;
 
   this._bindings = bindings;
 
-  this._bindings.on(&#x27;stateChange&#x27;, this.onStateChange.bind(this));
-  this._bindings.on(&#x27;platform&#x27;, this.onPlatform.bind(this));
-  this._bindings.on(&#x27;addressChange&#x27;, this.onAddressChange.bind(this));
-  this._bindings.on(&#x27;advertisingStart&#x27;, this.onAdvertisingStart.bind(this));
-  this._bindings.on(&#x27;advertisingStop&#x27;, this.onAdvertisingStop.bind(this));
-  this._bindings.on(&#x27;servicesSet&#x27;, this.onServicesSet.bind(this));
-  this._bindings.on(&#x27;accept&#x27;, this.onAccept.bind(this));
-  this._bindings.on(&#x27;mtuChange&#x27;, this.onMtuChange.bind(this));
-  this._bindings.on(&#x27;disconnect&#x27;, this.onDisconnect.bind(this));
+  this._bindings.on('stateChange', this.onStateChange.bind(this));
+  this._bindings.on('platform', this.onPlatform.bind(this));
+  this._bindings.on('addressChange', this.onAddressChange.bind(this));
+  this._bindings.on('advertisingStart', this.onAdvertisingStart.bind(this));
+  this._bindings.on('advertisingStop', this.onAdvertisingStop.bind(this));
+  this._bindings.on('servicesSet', this.onServicesSet.bind(this));
+  this._bindings.on('accept', this.onAccept.bind(this));
+  this._bindings.on('mtuChange', this.onMtuChange.bind(this));
+  this._bindings.on('disconnect', this.onDisconnect.bind(this));
 
-  this._bindings.on(&#x27;rssiUpdate&#x27;, this.onRssiUpdate.bind(this));
+  this._bindings.on('rssiUpdate', this.onRssiUpdate.bind(this));
 
   this._bindings.init();
 }</pre></li>
@@ -921,8 +914,8 @@
   this.value = options.value || null;
   this.descriptors = options.descriptors || [];
 
-  if (this.value &#x26;&#x26; (this.properties.length !== 1 || this.properties[0] !== &#x27;read&#x27;)) {
-    throw new Error(&#x27;Characteristics with value can be read only!&#x27;);
+  if (this.value &amp;&amp; (this.properties.length !== 1 || this.properties[0] !== 'read')) {
+    throw new Error('Characteristics with value can be read only!');
   }
 
   if (options.onReadRequest) {
@@ -949,12 +942,12 @@
     this.onIndicate = options.onIndicate;
   }
 
-  this.on(&#x27;readRequest&#x27;, this.onReadRequest.bind(this));
-  this.on(&#x27;writeRequest&#x27;, this.onWriteRequest.bind(this));
-  this.on(&#x27;subscribe&#x27;, this.onSubscribe.bind(this));
-  this.on(&#x27;unsubscribe&#x27;, this.onUnsubscribe.bind(this));
-  this.on(&#x27;notify&#x27;, this.onNotify.bind(this));
-  this.on(&#x27;indicate&#x27;, this.onIndicate.bind(this));
+  this.on('readRequest', this.onReadRequest.bind(this));
+  this.on('writeRequest', this.onWriteRequest.bind(this));
+  this.on('subscribe', this.onSubscribe.bind(this));
+  this.on('unsubscribe', this.onUnsubscribe.bind(this));
+  this.on('notify', this.onNotify.bind(this));
+  this.on('indicate', this.onIndicate.bind(this));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1166,21 +1159,21 @@ bleno.updateRssi([callback(error, rssi)]); // not available in OS X 10.9
     <li>description and source-code<pre class="apidocCodePre">platform = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-var PrimaryService = require(&#x27;./primary-service&#x27;);
-var Characteristic = require(&#x27;./characteristic&#x27;);
-var Descriptor = require(&#x27;./descriptor&#x27;);
+var PrimaryService = require('./primary-service');
+var Characteristic = require('./characteristic');
+var Descriptor = require('./descriptor');
 
 var bindings = null;
 
 var platform = os.<span class="apidocCodeKeywordSpan">platform</span>();
 
-if (platform === &#x27;darwin&#x27;) {
-bindings = require(&#x27;./mac/bindings&#x27;);
-} else if (platform === &#x27;linux&#x27; || platform === &#x27;freebsd&#x27; || platform === &#x27;win32&#x27; || platform === &#
-x27;android&#x27;) {
-bindings = require(&#x27;./hci-socket/bindings&#x27;);
+if (platform === 'darwin') {
+bindings = require('./mac/bindings');
+} else if (platform === 'linux' || platform === 'freebsd' || platform === 'win32' || platform === &amp;#
+x27;android') {
+bindings = require('./hci-socket/bindings');
 } else {
-throw new Error(&#x27;Unsupported platform&#x27;);
+throw new Error('Unsupported platform');
 ...</pre></li>
     </ul>
 
@@ -1299,25 +1292,25 @@ throw new Error(&#x27;Unsupported platform&#x27;);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function Bleno() {
-  this.platform = &#x27;unknown&#x27;;
-  this.state = &#x27;unknown&#x27;;
-  this.address = &#x27;unknown&#x27;;
+  this.platform = 'unknown';
+  this.state = 'unknown';
+  this.address = 'unknown';
   this.rssi = 0;
   this.mtu = 20;
 
   this._bindings = bindings;
 
-  this._bindings.on(&#x27;stateChange&#x27;, this.onStateChange.bind(this));
-  this._bindings.on(&#x27;platform&#x27;, this.onPlatform.bind(this));
-  this._bindings.on(&#x27;addressChange&#x27;, this.onAddressChange.bind(this));
-  this._bindings.on(&#x27;advertisingStart&#x27;, this.onAdvertisingStart.bind(this));
-  this._bindings.on(&#x27;advertisingStop&#x27;, this.onAdvertisingStop.bind(this));
-  this._bindings.on(&#x27;servicesSet&#x27;, this.onServicesSet.bind(this));
-  this._bindings.on(&#x27;accept&#x27;, this.onAccept.bind(this));
-  this._bindings.on(&#x27;mtuChange&#x27;, this.onMtuChange.bind(this));
-  this._bindings.on(&#x27;disconnect&#x27;, this.onDisconnect.bind(this));
+  this._bindings.on('stateChange', this.onStateChange.bind(this));
+  this._bindings.on('platform', this.onPlatform.bind(this));
+  this._bindings.on('addressChange', this.onAddressChange.bind(this));
+  this._bindings.on('advertisingStart', this.onAdvertisingStart.bind(this));
+  this._bindings.on('advertisingStop', this.onAdvertisingStop.bind(this));
+  this._bindings.on('servicesSet', this.onServicesSet.bind(this));
+  this._bindings.on('accept', this.onAccept.bind(this));
+  this._bindings.on('mtuChange', this.onMtuChange.bind(this));
+  this._bindings.on('disconnect', this.onDisconnect.bind(this));
 
-  this._bindings.on(&#x27;rssiUpdate&#x27;, this.onRssiUpdate.bind(this));
+  this._bindings.on('rssiUpdate', this.onRssiUpdate.bind(this));
 
   this._bindings.init();
 }</pre></li>
@@ -1360,8 +1353,8 @@ throw new Error(&#x27;Unsupported platform&#x27;);
   this.value = options.value || null;
   this.descriptors = options.descriptors || [];
 
-  if (this.value &#x26;&#x26; (this.properties.length !== 1 || this.properties[0] !== &#x27;read&#x27;)) {
-    throw new Error(&#x27;Characteristics with value can be read only!&#x27;);
+  if (this.value &amp;&amp; (this.properties.length !== 1 || this.properties[0] !== 'read')) {
+    throw new Error('Characteristics with value can be read only!');
   }
 
   if (options.onReadRequest) {
@@ -1388,12 +1381,12 @@ throw new Error(&#x27;Unsupported platform&#x27;);
     this.onIndicate = options.onIndicate;
   }
 
-  this.on(&#x27;readRequest&#x27;, this.onReadRequest.bind(this));
-  this.on(&#x27;writeRequest&#x27;, this.onWriteRequest.bind(this));
-  this.on(&#x27;subscribe&#x27;, this.onSubscribe.bind(this));
-  this.on(&#x27;unsubscribe&#x27;, this.onUnsubscribe.bind(this));
-  this.on(&#x27;notify&#x27;, this.onNotify.bind(this));
-  this.on(&#x27;indicate&#x27;, this.onIndicate.bind(this));
+  this.on('readRequest', this.onReadRequest.bind(this));
+  this.on('writeRequest', this.onWriteRequest.bind(this));
+  this.on('subscribe', this.onSubscribe.bind(this));
+  this.on('unsubscribe', this.onUnsubscribe.bind(this));
+  this.on('notify', this.onNotify.bind(this));
+  this.on('indicate', this.onIndicate.bind(this));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1440,7 +1433,7 @@ throw new Error(&#x27;Unsupported platform&#x27;);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">disconnect = function () {
-  debug(&#x27;disconnect&#x27;);
+  debug('disconnect');
   this._bindings.disconnect();
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -1472,8 +1465,8 @@ bleno.updateRssi([callback(error, rssi)]); // not available in OS X 10.9
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">onAccept = function (clientAddress) {
-  debug(&#x27;accept &#x27; + clientAddress);
-  this.emit(&#x27;accept&#x27;, clientAddress);
+  debug('accept ' + clientAddress);
+  this.emit('accept', clientAddress);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1488,7 +1481,7 @@ bleno.updateRssi([callback(error, rssi)]); // not available in OS X 10.9
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">onAddressChange = function (address) {
-  debug(&#x27;addressChange &#x27; + address);
+  debug('addressChange ' + address);
 
   this.address = address;
 }</pre></li>
@@ -1505,13 +1498,13 @@ bleno.updateRssi([callback(error, rssi)]); // not available in OS X 10.9
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">onAdvertisingStart = function (error) {
-  debug(&#x27;advertisingStart: &#x27; + error);
+  debug('advertisingStart: ' + error);
 
   if (error) {
-    this.emit(&#x27;advertisingStartError&#x27;, error);
+    this.emit('advertisingStartError', error);
   }
 
-  this.emit(&#x27;advertisingStart&#x27;, error);
+  this.emit('advertisingStart', error);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1526,8 +1519,8 @@ bleno.updateRssi([callback(error, rssi)]); // not available in OS X 10.9
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">onAdvertisingStop = function () {
-  debug(&#x27;advertisingStop&#x27;);
-  this.emit(&#x27;advertisingStop&#x27;);
+  debug('advertisingStop');
+  this.emit('advertisingStop');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1542,8 +1535,8 @@ bleno.updateRssi([callback(error, rssi)]); // not available in OS X 10.9
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">onDisconnect = function (clientAddress) {
-  debug(&#x27;disconnect&#x27; + clientAddress);
-  this.emit(&#x27;disconnect&#x27;, clientAddress);
+  debug('disconnect' + clientAddress);
+  this.emit('disconnect', clientAddress);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1558,11 +1551,11 @@ bleno.updateRssi([callback(error, rssi)]); // not available in OS X 10.9
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">onMtuChange = function (mtu) {
-  debug(&#x27;mtu &#x27; + mtu);
+  debug('mtu ' + mtu);
 
   this.mtu = mtu;
 
-  this.emit(&#x27;mtuChange&#x27;, mtu);
+  this.emit('mtuChange', mtu);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1577,7 +1570,7 @@ bleno.updateRssi([callback(error, rssi)]); // not available in OS X 10.9
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">onPlatform = function (platform) {
-  debug(&#x27;platform &#x27; + platform);
+  debug('platform ' + platform);
 
   this.platform = platform;
 }</pre></li>
@@ -1594,7 +1587,7 @@ bleno.updateRssi([callback(error, rssi)]); // not available in OS X 10.9
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">onRssiUpdate = function (rssi) {
-  this.emit(&#x27;rssiUpdate&#x27;, rssi);
+  this.emit('rssiUpdate', rssi);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1609,13 +1602,13 @@ bleno.updateRssi([callback(error, rssi)]); // not available in OS X 10.9
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">onServicesSet = function (error) {
-  debug(&#x27;servicesSet&#x27;);
+  debug('servicesSet');
 
   if (error) {
-    this.emit(&#x27;servicesSetError&#x27;, error);
+    this.emit('servicesSetError', error);
   }
 
-  this.emit(&#x27;servicesSet&#x27;, error);
+  this.emit('servicesSet', error);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1630,11 +1623,11 @@ bleno.updateRssi([callback(error, rssi)]); // not available in OS X 10.9
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">onStateChange = function (state) {
-  debug(&#x27;stateChange &#x27; + state);
+  debug('stateChange ' + state);
 
   this.state = state;
 
-  this.emit(&#x27;stateChange&#x27;, state);
+  this.emit('stateChange', state);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1650,7 +1643,7 @@ bleno.updateRssi([callback(error, rssi)]); // not available in OS X 10.9
     <ul>
     <li>description and source-code<pre class="apidocCodePre">setServices = function (services, callback) {
   if (callback) {
-    this.once(&#x27;servicesSet&#x27;, callback);
+    this.once('servicesSet', callback);
   }
   this._bindings.setServices(services);
 }</pre></li>
@@ -1683,23 +1676,23 @@ bleno.disconnect(); // Linux only
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">startAdvertising = function (name, serviceUuids, callback) {
-  if (this.state !== &#x27;poweredOn&#x27;) {
-    var error = new Error(&#x27;Could not start advertising, state is &#x27; + this.state + &#x27; (not poweredOn)&#x27;);
+  if (this.state !== 'poweredOn') {
+    var error = new Error('Could not start advertising, state is ' + this.state + ' (not poweredOn)');
 
-    if (typeof callback === &#x27;function&#x27;) {
+    if (typeof callback === 'function') {
       callback(error);
     } else {
       throw error;
     }
   } else {
     if (callback) {
-      this.once(&#x27;advertisingStart&#x27;, callback);
+      this.once('advertisingStart', callback);
     }
 
     var undashedServiceUuids = [];
 
-    if (serviceUuids &#x26;&#x26; serviceUuids.length) {
-      for (var i = 0; i &#x3c; serviceUuids.length; i++) {
+    if (serviceUuids &amp;&amp; serviceUuids.length) {
+      for (var i = 0; i &lt; serviceUuids.length; i++) {
         undashedServiceUuids[i] = UuidUtil.removeDashes(serviceUuids[i]);
       }
     }
@@ -1709,21 +1702,21 @@ bleno.disconnect(); // Linux only
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-NOTE: ```bleno.state``` must be ```poweredOn``` before advertising is started. ```bleno.on(&#x27;stateChange&#x27;, callback(state
+NOTE: ```bleno.state``` must be ```poweredOn``` before advertising is started. ```bleno.on('stateChange', callback(state
 ));``` can be used register for state change events.
 
 ```javascript
-var name = &#x27;name&#x27;;
-var serviceUuids = [&#x27;fffffffffffffffffffffffffffffff0&#x27;]
+var name = 'name';
+var serviceUuids = ['fffffffffffffffffffffffffffffff0']
 
 bleno.<span class="apidocCodeKeywordSpan">startAdvertising</span>(name, serviceUuids[, callback(error)]);
 ```
 
- __Note:__: there are limits on the name and service UUID&#x27;s
+ __Note:__: there are limits on the name and service UUID's
 
 * name
   * maximum 26 bytes
-* service UUID&#x27;s
+* service UUID's
 ...</pre></li>
     </ul>
 
@@ -1737,21 +1730,21 @@ bleno.<span class="apidocCodeKeywordSpan">startAdvertising</span>(name, serviceU
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">startAdvertisingIBeacon = function (uuid, major, minor, measuredPower, callback) {
-  if (this.state !== &#x27;poweredOn&#x27;) {
-    var error = new Error(&#x27;Could not start advertising, state is &#x27; + this.state + &#x27; (not poweredOn)&#x27;);
+  if (this.state !== 'poweredOn') {
+    var error = new Error('Could not start advertising, state is ' + this.state + ' (not poweredOn)');
 
-    if (typeof callback === &#x27;function&#x27;) {
+    if (typeof callback === 'function') {
       callback(error);
     } else {
       throw error;
     }
   } else {
     var undashedUuid =  UuidUtil.removeDashes(uuid);
-    var uuidData = new Buffer(undashedUuid, &#x27;hex&#x27;);
+    var uuidData = new Buffer(undashedUuid, 'hex');
     var uuidDataLength = uuidData.length;
     var iBeaconData = new Buffer(uuidData.length + 5);
 
-    for (var i = 0; i &#x3c; uuidDataLength; i++) {
+    for (var i = 0; i &lt; uuidDataLength; i++) {
       iBeaconData[i] = uuidData[i];
     }
 
@@ -1760,10 +1753,10 @@ bleno.<span class="apidocCodeKeywordSpan">startAdvertising</span>(name, serviceU
     iBeaconData.writeInt8(measuredPower, uuidDataLength + 4);
 
     if (callback) {
-      this.once(&#x27;advertisingStart&#x27;, callback);
+      this.once('advertisingStart', callback);
     }
 
-    debug(&#x27;iBeacon data = &#x27; + iBeaconData.toString(&#x27;hex&#x27;));
+    debug('iBeacon data = ' + iBeaconData.toString('hex'));
 
     this._bindings.startAdvertisingIBeacon(iBeaconData);
   }
@@ -1771,7 +1764,7 @@ bleno.<span class="apidocCodeKeywordSpan">startAdvertising</span>(name, serviceU
     <li>example usage<pre class="apidocCodePre">...
 
 ```javascript
-var uuid = &#x27;e2c56db5dffb48d2b060d0f5a71096e0&#x27;;
+var uuid = 'e2c56db5dffb48d2b060d0f5a71096e0';
 var major = 0; // 0x0000 - 0xffff
 var minor = 0; // 0x0000 - 0xffff
 var measuredPower = -59; // -128 - 127
@@ -1797,22 +1790,22 @@ bleno.<span class="apidocCodeKeywordSpan">startAdvertisingIBeacon</span>(uuid, m
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">startAdvertisingWithEIRData = function (advertisementData, scanData, callback) {
-  if (typeof scanData === &#x27;function&#x27;) {
+  if (typeof scanData === 'function') {
     callback = scanData;
     scanData = null;
   }
 
-  if (this.state !== &#x27;poweredOn&#x27;) {
-    var error = new Error(&#x27;Could not advertising scanning, state is &#x27; + this.state + &#x27; (not poweredOn)&#x27;);
+  if (this.state !== 'poweredOn') {
+    var error = new Error('Could not advertising scanning, state is ' + this.state + ' (not poweredOn)');
 
-    if (typeof callback === &#x27;function&#x27;) {
+    if (typeof callback === 'function') {
       callback(error);
     } else {
       throw error;
     }
   } else {
     if (callback) {
-      this.once(&#x27;advertisingStart&#x27;, callback);
+      this.once('advertisingStart', callback);
     }
 
     this._bindings.startAdvertisingWithEIRData(advertisementData, scanData);
@@ -1849,7 +1842,7 @@ bleno.<span class="apidocCodeKeywordSpan">startAdvertisingWithEIRData</span>(adv
     <ul>
     <li>description and source-code<pre class="apidocCodePre">stopAdvertising = function (callback) {
   if (callback) {
-    this.once(&#x27;advertisingStop&#x27;, callback);
+    this.once('advertisingStop', callback);
   }
   this._bindings.stopAdvertising();
 }</pre></li>
@@ -1884,7 +1877,7 @@ Set the primary services available on the peripheral.
     <ul>
     <li>description and source-code<pre class="apidocCodePre">updateRssi = function (callback) {
   if (callback) {
-    this.once(&#x27;rssiUpdate&#x27;, function(rssi) {
+    this.once('rssiUpdate', function(rssi) {
       callback(null, rssi);
     });
   }
@@ -1930,8 +1923,8 @@ var PrimaryService = bleno.PrimaryService;
   this.value = options.value || null;
   this.descriptors = options.descriptors || [];
 
-  if (this.value &#x26;&#x26; (this.properties.length !== 1 || this.properties[0] !== &#x27;read&#x27;)) {
-    throw new Error(&#x27;Characteristics with value can be read only!&#x27;);
+  if (this.value &amp;&amp; (this.properties.length !== 1 || this.properties[0] !== 'read')) {
+    throw new Error('Characteristics with value can be read only!');
   }
 
   if (options.onReadRequest) {
@@ -1958,12 +1951,12 @@ var PrimaryService = bleno.PrimaryService;
     this.onIndicate = options.onIndicate;
   }
 
-  this.on(&#x27;readRequest&#x27;, this.onReadRequest.bind(this));
-  this.on(&#x27;writeRequest&#x27;, this.onWriteRequest.bind(this));
-  this.on(&#x27;subscribe&#x27;, this.onSubscribe.bind(this));
-  this.on(&#x27;unsubscribe&#x27;, this.onUnsubscribe.bind(this));
-  this.on(&#x27;notify&#x27;, this.onNotify.bind(this));
-  this.on(&#x27;indicate&#x27;, this.onIndicate.bind(this));
+  this.on('readRequest', this.onReadRequest.bind(this));
+  this.on('writeRequest', this.onWriteRequest.bind(this));
+  this.on('subscribe', this.onSubscribe.bind(this));
+  this.on('unsubscribe', this.onUnsubscribe.bind(this));
+  this.on('notify', this.onNotify.bind(this));
+  this.on('indicate', this.onIndicate.bind(this));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2107,22 +2100,22 @@ var PrimaryService = bleno.PrimaryService;
   });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  properties: [&#x27;write&#x27;, &#x27;writeWithoutResponse&#x27;]
+  properties: ['write', 'writeWithoutResponse']
 });
 };
 
 util.inherits(WriteOnlyCharacteristic, BlenoCharacteristic);
 
 WriteOnlyCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
-console.log(&#x27;WriteOnlyCharacteristic write request: &#x27; + data.<span class="apidocCodeKeywordSpan">toString</span>(&#x27
-;hex&#x27;) + &#x27; &#x27; + offset + &#x27; &#x27; + withoutResponse);
+console.log('WriteOnlyCharacteristic write request: ' + data.<span class="apidocCodeKeywordSpan">toString</span>('
+;hex') + ' ' + offset + ' ' + withoutResponse);
 
 callback(this.RESULT_SUCCESS);
 };
 
 var NotifyOnlyCharacteristic = function() {
 NotifyOnlyCharacteristic.super_.call(this, {
-  uuid: &#x27;fffffffffffffffffffffffffffffff5&#x27;,
+  uuid: 'fffffffffffffffffffffffffffffff5',
 ...</pre></li>
     </ul>
 
@@ -2174,26 +2167,26 @@ NotifyOnlyCharacteristic.super_.call(this, {
     <li>description and source-code<pre class="apidocCodePre">toString = function () {
   return JSON.stringify({
     uuid: this.uuid,
-    value: Buffer.isBuffer(this.value) ? this.value.toString(&#x27;hex&#x27;) : this.value
+    value: Buffer.isBuffer(this.value) ? this.value.toString('hex') : this.value
   });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  properties: [&#x27;write&#x27;, &#x27;writeWithoutResponse&#x27;]
+  properties: ['write', 'writeWithoutResponse']
 });
 };
 
 util.inherits(WriteOnlyCharacteristic, BlenoCharacteristic);
 
 WriteOnlyCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
-console.log(&#x27;WriteOnlyCharacteristic write request: &#x27; + data.<span class="apidocCodeKeywordSpan">toString</span>(&#x27
-;hex&#x27;) + &#x27; &#x27; + offset + &#x27; &#x27; + withoutResponse);
+console.log('WriteOnlyCharacteristic write request: ' + data.<span class="apidocCodeKeywordSpan">toString</span>('
+;hex') + ' ' + offset + ' ' + withoutResponse);
 
 callback(this.RESULT_SUCCESS);
 };
 
 var NotifyOnlyCharacteristic = function() {
 NotifyOnlyCharacteristic.super_.call(this, {
-  uuid: &#x27;fffffffffffffffffffffffffffffff5&#x27;,
+  uuid: 'fffffffffffffffffffffffffffffff5',
 ...</pre></li>
     </ul>
 
@@ -2254,22 +2247,22 @@ NotifyOnlyCharacteristic.super_.call(this, {
   });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  properties: [&#x27;write&#x27;, &#x27;writeWithoutResponse&#x27;]
+  properties: ['write', 'writeWithoutResponse']
 });
 };
 
 util.inherits(WriteOnlyCharacteristic, BlenoCharacteristic);
 
 WriteOnlyCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
-console.log(&#x27;WriteOnlyCharacteristic write request: &#x27; + data.<span class="apidocCodeKeywordSpan">toString</span>(&#x27
-;hex&#x27;) + &#x27; &#x27; + offset + &#x27; &#x27; + withoutResponse);
+console.log('WriteOnlyCharacteristic write request: ' + data.<span class="apidocCodeKeywordSpan">toString</span>('
+;hex') + ' ' + offset + ' ' + withoutResponse);
 
 callback(this.RESULT_SUCCESS);
 };
 
 var NotifyOnlyCharacteristic = function() {
 NotifyOnlyCharacteristic.super_.call(this, {
-  uuid: &#x27;fffffffffffffffffffffffffffffff5&#x27;,
+  uuid: 'fffffffffffffffffffffffffffffff5',
 ...</pre></li>
     </ul>
 
@@ -2289,19 +2282,19 @@ NotifyOnlyCharacteristic.super_.call(this, {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">removeDashes = function (uuid) {
   if (uuid) {
-    uuid = uuid.replace(/-/g, &#x27;&#x27;);
+    uuid = uuid.replace(/-/g, '');
   }
 
   return uuid;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-      this.once(&#x27;advertisingStart&#x27;, callback);
+      this.once('advertisingStart', callback);
     }
 
     var undashedServiceUuids = [];
 
-    if (serviceUuids &#x26;&#x26; serviceUuids.length) {
-      for (var i = 0; i &#x3c; serviceUuids.length; i++) {
+    if (serviceUuids &amp;&amp; serviceUuids.length) {
+      for (var i = 0; i &lt; serviceUuids.length; i++) {
         undashedServiceUuids[i] = UuidUtil.<span class="apidocCodeKeywordSpan">removeDashes</span>(serviceUuids[i]);
       }
     }
@@ -2321,3 +2314,4 @@ NotifyOnlyCharacteristic.super_.call(this, {
     ]
 </div>
 </div>
+</body></html>
